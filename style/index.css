@@ -193,3 +193,36 @@ h2 {
   margin-top: 1rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.05);
 }
+
+/* Add these styles to your index.css file */
+
+.consultation-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: #f9fafb;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.consultation-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+  /* Truncate long symptom descriptions */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.consultation-time {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+.consultation-status {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #f97316; /* An orange color for "pending" */
+  margin-top: 0.75rem;
+}

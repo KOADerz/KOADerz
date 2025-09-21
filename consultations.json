@@ -1,0 +1,16 @@
+[
+  {
+    "studentName": "eq",
+    "studentId": "qwe",
+    "symptoms": "qwe",
+    "receivedAt": "2025-09-21T10:24:03.024Z",
+    "id": 1758450243024
+  },
+  {
+    "studentName": "Aryan",
+    "studentId": "dasd",
+    "symptoms": "a",
+    "receivedAt": "2025-09-21T10:21:34.896Z",
+    "id": 1758450094896
+  }
+]
