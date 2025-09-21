@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style/index.css">
     <link rel="icon" type="image/x-icon" href="logo.png">
-  <title>VIT medical</title>
+  <title>VIT Medical Services</title>
 </head>
 <body>
   <header class="header">
@@ -51,6 +51,39 @@
       <br>
       <h2 class="h2">Your Consultations:</h2>
 <div class="box2" id="consultationsGrid">
+      </div>
+
+  </main>
+
+  <div class="modal-overlay" id="payment-modal-overlay">
+    <div class="modal-content">
+      <h2>Payment & Delivery Details</h2>
+      <form id="payment-form">
+        <input type="hidden" id="payment-consultation-id">
+        
+        <label for="hostel-type">Select Hostel</label>
+        <select id="hostel-type" required>
+          <option value="" disabled selected>-- Select Hostel Type --</option>
+          <option value="Male">Male Hostel</option>
+          <option value="Female">Female Hostel</option>
+        </select>
+        
+        <label for="hostel-block">Hostel Block (e.g., A, B, MH-G)</label>
+        <input type="text" id="hostel-block" placeholder="Enter Block Name/Number" required>
+
+        <label for="room-number">Room Number</label>
+        <input type="text" id="room-number" placeholder="Enter Room Number" required>
+        
+        <div class="modal-buttons">
+          <button type="submit" class="submit-btn">Pay and Order</button>
+          <button type="button" class="cancel-btn" id="payment-cancel-btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
   </div>
 </body>
 </html>

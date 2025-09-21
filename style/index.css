@@ -6,13 +6,15 @@
 
 body {
   font-family: sans-serif, Arial;
+  background-color: #f8f9f8;
+  
 }
 
 .header {
   display: flex;
   top: 0;
   padding: 1rem 2rem;
- background: linear-gradient(90deg, #4d92e1, #3276bb);
+  background: linear-gradient(90deg, #4d92e1, #3276bb);
   justify-content: space-between;
   align-items: center;
   color: white;
@@ -225,4 +227,108 @@ h2 {
   font-weight: 500;
   color: #f97316; /* An orange color for "pending" */
   margin-top: 0.75rem;
+}
+
+/* Add these styles to the bottom of index.css */
+
+/* --- Modal Styles --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none; /* Hidden by default */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#payment-form label {
+  display: block;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#payment-form input, #payment-form select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.modal-buttons button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submit-btn {
+  background-color: #3276bb;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+/* --- Doctor Response & Payment Button Styles --- */
+.doctor-response {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #eef7ff;
+  border-left: 4px solid #3276bb;
+  border-radius: 4px;
+}
+.doctor-response strong {
+  color: #1e40af;
+}
+
+.payment-btn {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  background-color: #22c55e;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.payment-btn:hover {
+  background-color: #16a34a;
+}
+
+.final-status {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f0fdf4;
+  border-left: 4px solid #22c55e;
+  border-radius: 4px;
+  color: #15803d;
+  font-weight: 500;
 }
