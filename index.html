@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style/index.css">
+    <link rel="icon" type="image/x-icon" href="logo.png">
   <title>VIT medical</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -18,5 +19,32 @@
       <a href="doctor.html" class="doctor">Doctor Portal</a>
     </div>
   </header>
+  <main class="box">
+    <div class="top">
+          <h2>Describe Your Medical Issue</h2>
+    <p class="para">Our qualified doctors will review your symptoms and prescribe appropriate medication</p>
+    </div>
+    <form>
+      <div class="top1">
+        <div class="name-div">
+          <label for="name-input" class="name-label">Full Name</label>
+          <input type="text" id="name-input" class="name-input" placeholder="Enter Your Full Name">
+        </div>
+        <div class="ID-div">
+          <label for="ID-input" class="ID-label">Student ID</label>
+          <input type="text" class="ID-input" id="ID-input" placeholder="Enter Your Student ID">
+        </div>
+      </div>
+      <div class="buttom1">
+        <div class="symptoms-div">
+                <label for="symptoms-input" class="symptoms-label">Describe your symptoms</label>
+        <textarea id="symptoms-input" class="symptoms-input" rows="4" placeholder="Describe your symptoms in detail (eg, cold, cough, fever etc)"></textarea>
+        </div>
+  
+        <button class="submit js-submit">Submit for Doctor Review</button>
+      </div>
+    </form>
+    <script src="script.js"></script>
+  </main>
 </body>
 </html>

@@ -12,7 +12,7 @@ body {
   display: flex;
   top: 0;
   padding: 1rem 2rem;
-  background-color: #2563eb;
+ background: linear-gradient(90deg, #4d92e1, #3276bb);
   justify-content: space-between;
   align-items: center;
   color: white;
@@ -49,4 +49,131 @@ body {
     align-items: flex-start;
     gap: 0.75rem;
   }
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  background-color: rgb(255, 255, 255);
+  width: 60%;
+  margin: 0 auto;
+  max-width: 38rem;
+  margin-top: 1rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.05);
+
+}
+
+.name-div,
+.ID-div,
+.symptoms-div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.3rem;
+}
+
+.top1 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  gap: 1.2rem;
+}
+
+.bottom1 {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+h2 {
+  font-size: 1.3rem;
+}
+
+.top {
+  width: 100%;
+  border-bottom-color: rgb(235, 234, 234);
+  border-bottom-style: solid;
+
+}
+
+@media (max-width: 660px) {
+  .box {
+    width: 100%;
+  }
+  .top1 {
+    flex-direction: column;
+  }
+}
+
+.submit {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 1rem;
+  background-color: rgb(191, 190, 190);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.3rem;
+  transition: all 0.2s ease;
+}
+
+.submit:hover {
+  opacity: 0.85;
+}
+
+.submit:active {
+  opacity: 0.7;
+}
+
+.name-input,
+.ID-input {
+  padding: 0.75rem; 
+  border: 0.0625rem solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 0.875rem; 
+  background-color: #f9fafb;
+}
+
+.symptoms-input {
+  padding: 0.75rem;
+  border: 0.0625rem solid #e5e7eb;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  background-color: #f9fafb;
+}
+
+.name-input::placeholder,
+.ID-input::placeholder,
+.symptoms-input::placeholder {
+  color: #b3b4b6;
+}
+
+.name-label,
+.ID-label,
+.symptoms-label {
+  font-family: sans-serif, Arial;
+  opacity: 0.9;
+
+}
+
+.para {
+  opacity: 0.8;
+  color: rgb(95, 95, 95);
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+}
+
+.grid-block {
+  /* margin-top: 1rem; */
+  background-color: rgb(217, 216, 216);
 }
