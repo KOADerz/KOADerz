@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const messageDiv = document.getElementById('formMessage');
   const consultationsGrid = document.getElementById('consultationsGrid');
 
-  // --- NEW FUNCTION TO CREATE A CONSULTATION CARD ---
   const createConsultationCard = (consultation) => {
     const card = document.createElement('div');
     card.classList.add('consultation-card');
@@ -19,24 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     return card;
   };
-
-  // --- NEW FUNCTION TO LOAD PAST CONSULTATIONS ---
   const loadPastConsultations = async () => {
     try {
       const response = await fetch('http://localhost:3000/api/get-consultations');
       const consultations = await response.json();
       
-      consultationsGrid.innerHTML = ''; // Clear any existing content
+      consultationsGrid.innerHTML = ''; 
       consultations.forEach(consultation => {
         const card = createConsultationCard(consultation);
-        consultationsGrid.appendChild(card); // Use appendChild to keep the order (oldest first)
+        consultationsGrid.appendChild(card); 
       });
     } catch (error) {
       console.error('Could not load past consultations:', error);
     }
   };
 
-  // --- FORM SUBMISSION LOGIC (Updated to use the new function) ---
+  
   studentForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const formData = new FormData(studentForm);
@@ -54,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         messageDiv.textContent = 'Your request has been sent successfully!';
         messageDiv.style.color = 'green';
         
-        // Add the new card to the top of the list instantly
+        
         const tempConsultationData = { ...dataObject, symptoms: dataObject.symptomsInput, receivedAt: new Date() };
         const newCard = createConsultationCard(tempConsultationData);
         consultationsGrid.prepend(newCard);
@@ -71,6 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // --- LOAD EVERYTHING WHEN THE PAGE STARTS ---
+ 
   loadPastConsultations();
 });

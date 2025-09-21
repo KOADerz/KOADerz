@@ -6,32 +6,12 @@
   <link rel="stylesheet" href="style/doctor.css">
   <link rel="icon" type="image/x-icon" href="logo.jpeg">
   <title>Doctor's Portal - VIT Medical</title>
-  <style>
-    main { padding: 2rem; max-width: 1200px; margin: 1rem auto; }
-    h2 { margin-bottom: 1rem; }
-    table { width: 100%; border-collapse: collapse; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    th, td { padding: 12px 15px; border: 1px solid #ddd; text-align: left; }
-    th { background-color: #4d92e1; color: white; }
-    tbody tr:nth-of-type(even) { background-color: #f9f9f9; }
-    #refreshBtn {
-      display: block;
-      margin-bottom: 1rem;
-      padding: 10px 15px;
-      border: none;
-      background-color: #3276bb;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    #refreshBtn:hover { background-color: #4d92e1; }
-  </style>
 </head>
 <body>
   <header class="header">
     <div class="left-header">
       <h1 class="h1">VIT Medical Services</h1>
-      <p class="slogan">Your Health, Our Priority</p>
+      <p class="slogan">Doctor's Dashboard</p>
     </div>
     <div class="right-header">
       <a href="index.html" class="student">Student Portal</a>
@@ -39,62 +19,65 @@
     </div>
   </header>
 
-  <main>
-    <h2>New Consultation Requests</h2>
-    <button id="refreshBtn">Refresh List</button>
-    <table>
-      <thead>
-        <tr>
-          <th>Date & Time</th>
-          <th>Student Name</th>
-          <th>Student ID</th>
-          <th>Symptoms</th>
-        </tr>
-      </thead>
-      <tbody id="consultations-table-body">
-        </tbody>
-    </table>
+  <main class="dashboard-container">
+    
+    <div class="dashboard-column left-column">
+      <h2 class="column-header">
+        <span class="icon">⏰</span>
+        <span>Pending Issues (<span id="pending-count">0</span>)</span>
+      </h2>
+      <div class="card-list" id="requests-list">
+        <div class="empty-state">
+          <span class="icon">⏰</span>
+          <p>No pending issues</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-column middle-column">
+      <div id="response-form-container">
+        
+        <div class="empty-state-large" id="select-issue-placeholder">
+          <span class="icon">🩺</span>
+          <p>Select a pending issue to respond</p>
+        </div>
+
+        <form id="response-form" style="display: none;">
+          <h2 class="form-header">Respond to Consultation</h2>
+          <div id="modal-student-info"></div>
+          <input type="hidden" id="consultation-id-input">
+          
+          <label for="diagnosis-input">Diagnosis</label>
+          <textarea id="diagnosis-input" rows="4" required></textarea>
+          
+          <label for="medicine-input">Prescribed Medicine</label>
+          <textarea id="medicine-input" rows="3" required></textarea>
+
+          <label for="price-input">Consultation Fee (₹)</label>
+          <input type="number" id="price-input" required>
+          
+          <div class="modal-buttons">
+            <button type="submit" class="submit-btn">Submit Response</button>
+            <button type="button" class="cancel-btn" id="cancel-btn">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="dashboard-column right-column">
+      <h2 class="column-header">
+        <span class="icon">💊</span>
+        <span>Recent Responses (<span id="response-count">0</span>)</span>
+      </h2>
+      <div class="card-list" id="responses-list">
+        <div class="empty-state">
+          <span class="icon">💊</span>
+          <p>No responses yet</p>
+        </div>
+      </div>
+    </div>
   </main>
 
-  <script>
-    const tableBody = document.getElementById('consultations-table-body');
-    const refreshBtn = document.getElementById('refreshBtn');
-
-    const loadConsultations = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/api/get-consultations');
-        const consultations = await response.json();
-
-        tableBody.innerHTML = '';
-
-        if (consultations.length === 0) {
-          tableBody.innerHTML = '<tr><td colspan="4" style="text-align: center;">No new consultations found.</td></tr>';
-          return;
-        }
-
-        consultations.forEach(c => {
-          const row = document.createElement('tr');
-          const receivedDate = new Date(c.receivedAt).toLocaleString();
-          
-          row.innerHTML = `
-            <td>${receivedDate}</td>
-            <td>${c.studentName}</td>
-            <td>${c.studentId}</td>
-            <td>${c.symptoms}</td>
-          `;
-          tableBody.appendChild(row);
-        });
-
-      } catch (error) {
-        console.error('Failed to fetch consultations:', error);
-        tableBody.innerHTML = '<tr><td colspan="4" style="text-align: center;">Error loading data from the server.</td></tr>';
-      }
-    };
-
-    document.addEventListener('DOMContentLoaded', loadConsultations);
-
-    refreshBtn.addEventListener('click', loadConsultations);
-
-  </script>
+  <script src="js/doctor-script.js"></script>
 </body>
 </html>
