@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="style/index.css">
     <link rel="icon" type="image/x-icon" href="logo.png">
   <title>VIT medical</title>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="header">
@@ -24,27 +23,42 @@
           <h2>Describe Your Medical Issue</h2>
     <p class="para">Our qualified doctors will review your symptoms and prescribe appropriate medication</p>
     </div>
-    <form>
+    <form class="form" id="studentForm">
       <div class="top1">
         <div class="name-div">
           <label for="name-input" class="name-label">Full Name</label>
-          <input type="text" id="name-input" class="name-input" placeholder="Enter Your Full Name">
+          <input type="text" id="name-input" class="name-input" name="nameInput" placeholder="Enter Your Full Name" required>
         </div>
         <div class="ID-div">
           <label for="ID-input" class="ID-label">Student ID</label>
-          <input type="text" class="ID-input" id="ID-input" placeholder="Enter Your Student ID">
+          <input type="text" class="ID-input" id="ID-input" name="IdInput" placeholder="Enter Your Student ID" required>
         </div>
       </div>
       <div class="buttom1">
         <div class="symptoms-div">
                 <label for="symptoms-input" class="symptoms-label">Describe your symptoms</label>
-        <textarea id="symptoms-input" class="symptoms-input" rows="4" placeholder="Describe your symptoms in detail (eg, cold, cough, fever etc)"></textarea>
+        <textarea id="symptoms-input" class="symptoms-input" name="symptomsInput" rows="4" placeholder="Describe your symptoms in detail (eg, cold, cough, fever etc)" required></textarea>
         </div>
   
-        <button class="submit js-submit">Submit for Doctor Review</button>
+        <input type="submit" class="submit js-submit"></button>
       </div>
     </form>
+
+    <div id="formMessage" style="margin-top: 1rem; text-align: center; font-weight: bold;"></div>
+    
     <script src="script.js"></script>
   </main>
+      <br>
+      <h2 class="h2">Your Consultations:</h2>
+    <div class="box2">
+      <div class="consultations">
+        <div class="consultations-symptoms">Symptoms</div>
+        <div class="consultations-date">date and time</div>
+      </div>
+            <div class="consultations">
+        <div class="consultations-symptoms">Symptoms</div>
+        <div class="consultations-date">date and time</div>
+      </div>
+    </div>
 </body>
 </html>

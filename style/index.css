@@ -61,7 +61,6 @@ body {
   max-width: 38rem;
   margin-top: 1rem;
   box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.05);
-
 }
 
 .name-div,
@@ -176,4 +175,21 @@ h2 {
 .grid-block {
   /* margin-top: 1rem; */
   background-color: rgb(217, 216, 216);
+}
+
+.h2 {
+  text-align: center;
+}
+
+.box2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: rgb(255, 255, 255);
+  width: 60%;
+  margin: 0 auto;
+  max-width: 38rem;
+  margin-top: 1rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.05);
 }
