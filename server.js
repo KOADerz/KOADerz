@@ -1,16 +1,24 @@
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
+const path = require('path'); // <-- ADD THIS LINE
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // <-- Use Railway's port
 const DB_FILE = './consultations.json';
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// --- API Endpoints ---
+// --- ADD THIS SECTION TO SERVE YOUR FRONTEND ---
+// This tells Express to serve all static files (HTML, CSS, JS)
+// from the 'public' directory.
+app.use(express.static(path.join(__dirname, 'public')));
+// ----------------------------------------------
+
+
+// --- API Endpoints (Your existing code) ---
 
 // GET all consultations
 app.get('/api/get-consultations', (req, res) => {
@@ -33,7 +41,7 @@ app.post('/api/submit-consultation', (req, res) => {
       studentId: req.body.IdInput,
       symptoms: req.body.symptomsInput,
       status: 'pending',
-      paymentStatus: 'n/a', // New field for payment tracking
+      paymentStatus: 'n/a',
       response: null,
       deliveryDetails: null
     };
@@ -60,7 +68,7 @@ app.post('/api/respond/:id', (req, res) => {
     if (index === -1) return res.status(404).json({ message: 'Not found' });
 
     consultations[index].status = 'completed';
-    consultations[index].paymentStatus = 'pending'; // Set payment as pending
+    consultations[index].paymentStatus = 'pending';
     consultations[index].response = {
       diagnosis, medicine, price, respondedAt: new Date()
     };
@@ -72,7 +80,7 @@ app.post('/api/respond/:id', (req, res) => {
   });
 });
 
-// --- NEW ENDPOINT TO CONFIRM PAYMENT AND DELIVERY ---
+// Confirm payment and delivery
 app.post('/api/confirm-payment/:id', (req, res) => {
   const consultationId = parseInt(req.params.id);
   const { hostelType, hostelBlock, roomNumber } = req.body;
@@ -98,5 +106,5 @@ app.post('/api/confirm-payment/:id', (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log(`✅ Server is running on http://localhost:${PORT}`);
+  console.log(`✅ Server is running on port ${PORT}`);
 });
